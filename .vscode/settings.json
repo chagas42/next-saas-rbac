@@ -1,4 +1,7 @@
 {
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "prettier.configPath": "node_modules/@saas/prettier/index.mjs",
   "eslint.workingDirectories": [
     {
       "mode": "auto"
