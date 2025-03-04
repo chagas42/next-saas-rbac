@@ -12,13 +12,8 @@ import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 
 import Link from 'next/link'
-import { FormEvent, useState, useTransition } from 'react'
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from '../../../components/ui/alert'
-import { useFormState } from '../../../hooks/use-form-state'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { useFormState } from '@/hooks/use-form-state'
 
 export function SigInForm() {
   const [formState, handleSubmit, isPending] = useFormState(
