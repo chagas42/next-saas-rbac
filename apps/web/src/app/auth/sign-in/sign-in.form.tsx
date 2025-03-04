@@ -18,39 +18,17 @@ import {
   AlertDescription,
   AlertTitle,
 } from '../../../components/ui/alert'
-
-type formStateType = {
-  success: boolean
-  message: string | null
-  errors: Record<string, string[]> | null
-}
+import { useFormState } from '../../../hooks/use-form-state'
 
 export function SigInForm() {
-  const [formState, setFormState] = useState<formStateType>({
-    success: false,
-    message: null,
-    errors: null,
-  })
-
-  const [isPending, startTransition] = useTransition()
-
-  async function handleSignIn(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-
-    const form = event.currentTarget
-    const data = new FormData(form)
-
-    startTransition(async () => {
-      const state = await signInWithEmailAndPassword(data)
-
-      setFormState(state)
-    })
-  }
+  const [formState, handleSubmit, isPending] = useFormState(
+    signInWithEmailAndPassword
+  )
 
   const isFailure = formState.success === false
 
   return (
-    <form onSubmit={handleSignIn} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4">
       {isFailure && formState.message && (
         <Alert variant="destructive">
           <AlertTriangle className="size-4" />
