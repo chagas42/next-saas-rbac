@@ -4,6 +4,7 @@ import { signInWithPassword } from '@/http/sign-in-with-password'
 import { HTTPError } from 'ky'
 import { z } from 'zod'
 import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 const signInSchema = z.object({
   email: z
@@ -49,9 +50,5 @@ export async function signInWithEmailAndPassword(data: FormData) {
     }
   }
 
-  return {
-    success: true,
-    message: null,
-    errors: null,
-  }
+  redirect('/')
 }

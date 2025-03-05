@@ -14,6 +14,7 @@ import { Separator } from '@/components/ui/separator'
 import Link from 'next/link'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { useFormState } from '@/hooks/use-form-state'
+import { signInWithGitHub } from '../sign-up/action'
 
 export function SigInForm() {
   const [formState, handleSubmit, isPending] = useFormState(
@@ -82,6 +83,7 @@ export function SigInForm() {
       <Button
         className="w-full hover:cursor-pointer"
         variant="outline"
+        formAction={signInWithGitHub}
         type="submit"
       >
         <Image
